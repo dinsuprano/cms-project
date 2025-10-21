@@ -10,4 +10,8 @@ export default defineConfig({
         }),
         tailwindcss(),
     ],
+    server: {
+        https: false,
+        host: 'localhost',
+    },
 });
