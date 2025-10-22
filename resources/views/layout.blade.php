@@ -10,6 +10,7 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
     <title>{{'Jobes - Find Your Dream Job' }}</title>
@@ -22,7 +23,19 @@
     <x-hero />
     <x-top-banner />
   @endif
-    <main class="container mx-auto p-4 mt-4">{{ $slot }}</main>
+    <main class="container mx-auto p-4 mt-4">
+       <!-- Display alert messages -->
+      @if (session('success'))
+        <x-alert type="success" message="{{ session('success') }}" />
+      @endif
+
+      @if (session('error'))
+        <x-alert type="error" message="{{ session('error') }}" />
+      @endif
+
+      {{ $slot }}
+
+    </main>
     <script src="{{ asset('js/script.js') }}"></script>
   </body>
 </html>
