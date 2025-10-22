@@ -12,7 +12,7 @@
     />
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
-    <title>{{ $title ?? 'Workopia - Find Your Dream Job' }}</title>
+    <title>{{'Jobes - Find Your Dream Job' }}</title>
   </head>
 
   <body class="bg-gray-100">

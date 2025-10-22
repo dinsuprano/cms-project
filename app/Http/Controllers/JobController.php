@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Job;
+use Illuminate\View\View;
+use Illuminate\Http\RedirectResponse;
 
 class JobController extends Controller
 {
@@ -10,14 +13,8 @@ class JobController extends Controller
     // @route  GET /jobs
     public function index()
     {
-        $title = 'Available Jobs';
-        $jobs = [
-            'Software Engineer',
-            'Web Developer',
-            'Data Scientist',
-        ];
-
-        return view('jobs.index', compact('title', 'jobs'));
+        $jobs = Job::all();
+        return view('jobs.index')->with('jobs', $jobs);
     }
 
     // @desc   Show create job form
@@ -29,21 +26,28 @@ class JobController extends Controller
 
     // @desc   Store a new job
     // @route  POST /jobs
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
-        $title = $request->input('title');
-        $description = $request->input('description');
+        // Validate the incoming request data
+        $validatedData = $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'required|string',
+        ]);
 
-        return "Title: $title, Description: $description";
+        // Create a new job listing with the validated data
+        Job::create([
+            'title' => $validatedData['title'],
+            'description' => $validatedData['description'],
+        ]);
+
+        return redirect()->route('jobs.index');
     }
-
     // @desc   Show a single job
     // @route  GET /jobs/{id}
-    public function show(string $id)
+    public function show(Job $job): View
     {
-        return "Showing job $id";
+        return view('jobs.show', compact('job'));
     }
-
     // @desc   Show the form for editing a job
     // @route  GET /jobs/{id}/edit
     public function edit(string $id)
