@@ -7,9 +7,12 @@ use App\Models\Job;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class JobController extends Controller
 {
+    use AuthorizesRequests;
     // @desc   Show all jobs
     // @route  GET /jobs
     public function index()
@@ -22,6 +25,10 @@ class JobController extends Controller
     // @route  GET /jobs/create
     public function create()
     {
+        if (!Auth::check()) {
+            return redirect()->route('login');
+        }
+        
         return view('jobs.create');
     }
 
@@ -51,8 +58,8 @@ class JobController extends Controller
             'company_website' => 'nullable|url',
         ]);
 
-        // Add the hardcoded user_id
-        $validatedData['user_id'] = 1;
+        // Add the user ID of the current user
+        $validatedData['user_id'] = Auth::user()->id;
 
 
          // Check if a file was uploaded
@@ -79,12 +86,14 @@ class JobController extends Controller
     // @route  GET /jobs/{id}/edit
     public function edit(Job $job): View
     {
+        $this->authorize('update', $job);
         return view('jobs.edit')->with('job', $job);
     }
     // @desc   Update a job
     // @route  PUT /jobs/{id}
     public function update(Request $request,  Job $job): RedirectResponse
     {
+        $this->authorize('update', $job);
         // Validate the incoming request data
         $validatedData = $request->validate([
             'title' => 'required|string|max:255',
@@ -131,6 +140,7 @@ class JobController extends Controller
     // @route DELETE /jobs/{id}
     public function destroy(Job $job): RedirectResponse
     {
+        $this->authorize('delete', $job);
         // If there is a company logo, delete it from storage
         if ($job->company_logo) {
             Storage::delete('public/logos/' . $job->company_logo);
