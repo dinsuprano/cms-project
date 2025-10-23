@@ -12,6 +12,9 @@ export default defineConfig({
     ],
     server: {
         https: false,
-        host: 'localhost',
+        host: '0.0.0.0',  // Listen on all network interfaces
+        hmr: {
+            host: 'localhost',  // Hot module reload uses localhost
+        },
     },
 });

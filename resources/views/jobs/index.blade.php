@@ -8,4 +8,6 @@
     <p>No jobs found</p>
     @endforelse
   </div>
+  <!-- Pagination Links -->
+  <div class="mt-4">{{ $jobs->links() }}</div>
 </x-layout>
