@@ -65,10 +65,51 @@
         </form>
         </div>
     </div>
+
+    {{-- Applicants --}}
+    <div class="mt-4">
+      <h4 class="text-lg font-semibold mb-2">Applicants</h4>
+      @forelse($job->applicants as $applicant)
+      <div class="py-2 border-b border-gray-100">
+        <p class="text-gray-800">
+          <strong>Name: </strong> {{$applicant->full_name}}
+        </p>
+        <p class="text-gray-800">
+          <strong>Phone: </strong> {{$applicant->contact_phone}}
+        </p>
+        <p class="text-gray-800">
+          <strong>Email: </strong> {{$applicant->contact_email}}
+        </p>
+        <p class="text-gray-800">
+          <strong>Message: </strong> {{$applicant->message}}
+        </p>
+        <p class="text-gray-800 my-4">
+          <a href="{{asset('storage/' . $applicant->resume_path)}}" class="text-blue-500 hover:underline" download>
+            <i class="fas fa-download"></i> Download Resume
+          </a>
+        </p>
+        <!-- Delete Applicant Link -->
+        <form
+        method="POST"
+        action="{{ route('applicants.destroy', $applicant->id) }}"
+        onsubmit="return confirm('Are you sure you want to delete this applicant?');"
+        >
+        @csrf @method('DELETE')
+        <button type="submit" class="text-red-500 hover:text-red-700 text-sm">
+            <i class="fas fa-trash-alt"></i> Delete Applicant
+        </button>
+        </form>
+      </div>
+      @empty
+      <p class="text-gray-600 text-sm">No applicants yet.</p>
+      @endforelse
+    </div>
+
     @empty
     <p class="text-gray-700">You have no job listings.</p>
     @endforelse
     </div>
+
 </section>
 <x-bottom-banner />
 </x-layout>

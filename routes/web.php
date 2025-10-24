@@ -8,9 +8,12 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\BookmarkController;
+use App\Http\Controllers\ApplicantController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
+// Search route must come before resource routes to avoid conflicts
+Route::get('/jobs/search', [JobController::class, 'search'])->name('jobs.search');
 
 // Apply middleware to specific actions
 Route::resource('jobs', JobController::class)->middleware('auth')->only(['create', 'update','edit', 'destroy']);
@@ -36,5 +39,8 @@ Route::middleware('auth')->group(function () {
   Route::delete('/bookmarks/{job}', [BookmarkController::class, 'destroy'])->name('bookmarks.destroy');
 });
 
+Route::post('/jobs/{job}/apply', [ApplicantController::class, 'store'])
+->name('applicants.store')->middleware('auth');
+Route::delete('/applicants/{applicant}', [ApplicantController::class, 'destroy'])->name('applicants.destroy')->middleware('auth');
 
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
