@@ -25,6 +25,9 @@ class User extends Authenticatable
         'email',
         'password',
         'avatar',
+        'role',
+        'phone_number',
+        'location',
     ];
 
     /**
@@ -64,5 +67,26 @@ class User extends Authenticatable
     public function applications(): HasMany
     {
         return $this->hasMany(Applicant::class, 'user_id');
+    }
+
+    // Role helper methods
+    public function isAdmin(): bool
+    {
+        return $this->role === 'admin';
+    }
+
+    public function isEmployer(): bool
+    {
+        return $this->role === 'employer';
+    }
+
+    public function isUser(): bool
+    {
+        return $this->role === 'user';
+    }
+
+    public function hasRole(string $role): bool
+    {
+        return $this->role === $role;
     }
 }

@@ -19,7 +19,7 @@
   />
   <button
     type="submit"
-    class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+    class="px-6 py-3 bg-pink-500 hover:bg-pink-700 text-white font-medium rounded-lg transition duration-200 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2"
   >
     <i class="fa fa-search mr-2"></i> Search
   </button>

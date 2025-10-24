@@ -1,6 +1,6 @@
-@props(['heading' => 'Unlock Your Career Potential', 'subheading' => 'Discover the perfect job opportunity for you'])
+@props(['heading' => 'Empower Your Future', 'subheading' => 'Find the Job That Fits You Best'])
 
-<section class="bg-blue-900 text-white py-6 text-center">
+<section class="bg-pink-700 text-white py-6 text-center">
     <div class="container mx-auto">
         <h2 class="text-3xl font-semibold">
             {{ $heading }}

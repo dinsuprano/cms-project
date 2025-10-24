@@ -16,7 +16,7 @@
       name="{{ $name }}"
       {{ $required ? 'required' : '' }}
       {{ $accept ? 'accept=' . $accept : '' }}
-      class="block w-full px-4 py-3 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 focus:bg-white transition duration-200 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-medium file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 @error($name) !border-red-500 !ring-red-500 @enderror"
+      class="block w-full px-4 py-3 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 focus:bg-white transition duration-200 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-medium file:bg-red-50 file:text-blue-700 hover:file:bg-red-100 @error($name) !border-red-500 !ring-red-500 @enderror"
     />
   </div>
   @error($name)

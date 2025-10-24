@@ -11,7 +11,7 @@
             <div class="flex space-x-3 ml-4">
               <a
                 href="{{ route('jobs.edit', $job->id) }}"
-                class="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded"
+                class="px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded"
                 >Edit</a
               >
               <!-- Delete Form -->
@@ -112,7 +112,7 @@
                     <x-inputs.file id="resume" name="resume" label="Upload Your Resume (pdf)" :required="true" />
                     <button
                       type="submit"
-                      class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md"
+                      class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md"
                     >
                       Submit Application
                     </button>
@@ -184,7 +184,7 @@
         @else
           <button
             type="submit"
-            class="bg-blue-500 hover:bg-blue-600 text-white font-bold w-full py-2 px-4 rounded-full flex items-center justify-center"
+            class="bg-red-500 hover:bg-red-600 text-white font-bold w-full py-2 px-4 rounded-full flex items-center justify-center"
           >
             <i class="fas fa-bookmark mr-3"></i> Bookmark Listing
           </button>
