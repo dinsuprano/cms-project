@@ -18,7 +18,7 @@
       <div class="flex items-center justify-between">
         <div class="flex items-center space-x-4">
           <img
-            src="{{ $user->avatar ? asset('storage/' . $user->avatar) : asset('storage/avatars/default-avatar.png') }}"
+            src="{{ $user->avatar ? asset('storage/' . $user->avatar) : asset('storage/avatars/default-avatar.svg') }}"
             alt="{{ $user->name }}"
             class="w-24 h-24 rounded-full object-cover border-4 border-blue-500 shadow-lg"
           />

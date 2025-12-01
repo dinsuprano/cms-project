@@ -23,9 +23,14 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        // Truncate tables
+        // Truncate tables with foreign key checks disabled
+            DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+            DB::table('job_user_bookmarks')->truncate();
+            DB::table('applicants')->truncate();
             DB::table('job_listings')->truncate();
             DB::table('users')->truncate();
+            DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+            
             $this->call(AdminUserSeeder::class); // Seed admin and test users
             $this->call(TestUserSeeder::class); // Add this line
             $this->call(RandomUserSeeder::class);

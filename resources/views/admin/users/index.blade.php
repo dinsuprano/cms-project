@@ -26,7 +26,7 @@
             <tr class="hover:bg-gray-50">
               <td class="px-6 py-4 whitespace-nowrap">
                 <div class="flex items-center">
-                  <img src="{{ $user->avatar ? asset('storage/' . $user->avatar) : asset('storage/avatars/default-avatar.png') }}" 
+                  <img src="{{ $user->avatar ? asset('storage/' . $user->avatar) : asset('storage/avatars/default-avatar.svg') }}" 
                        alt="{{ $user->name }}" 
                        class="h-10 w-10 rounded-full object-cover">
                   <div class="ml-4">

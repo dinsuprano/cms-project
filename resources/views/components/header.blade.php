@@ -20,10 +20,10 @@
           class="flex items-center gap-3 hover:bg-white/10 px-3 py-2 rounded-xl transition-all duration-200 group"
         >
           <img
-            src="{{ Auth::user()->avatar ? asset('storage/' . Auth::user()->avatar) : asset('storage/avatars/default-avatar.png') }}"
+            src="{{ Auth::user()->avatar ? asset('storage/' . Auth::user()->avatar) : asset('storage/avatars/default-avatar.svg') }}"
             alt="{{ Auth::user()->name }}"
             class="w-10 h-10 rounded-full object-cover border-2 border-white/30 shadow-lg ring-2 ring-blue-800/50 group-hover:ring-white/50 transition-all duration-200"
-            onerror="this.src='{{ asset('storage/avatars/default-avatar.png') }}'"
+            onerror="this.src='{{ asset('storage/avatars/default-avatar.svg') }}'"
           />
           <span class="text-sm font-medium">{{ Auth::user()->name }}</span>
           <i class="fa fa-chevron-down text-xs transition-transform duration-200" :class="userDropdown ? 'rotate-180' : ''"></i>

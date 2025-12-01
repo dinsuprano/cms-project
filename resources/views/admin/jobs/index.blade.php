@@ -34,7 +34,7 @@
               </td>
               <td class="px-6 py-4 whitespace-nowrap">
                 <div class="flex items-center">
-                  <img src="{{ $job->user->avatar ? asset('storage/' . $job->user->avatar) : asset('storage/avatars/default-avatar.png') }}" 
+                  <img src="{{ $job->user->avatar ? asset('storage/' . $job->user->avatar) : asset('storage/avatars/default-avatar.svg') }}" 
                        alt="{{ $job->user->name }}" 
                        class="h-8 w-8 rounded-full object-cover mr-2">
                   <div class="text-sm text-gray-900">{{ $job->user->name }}</div>

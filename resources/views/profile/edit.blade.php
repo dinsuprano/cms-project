@@ -50,7 +50,7 @@
           <div class="flex flex-col items-center">
             <img
               id="avatar-preview"
-              src="{{ $user->avatar ? asset('storage/' . $user->avatar) : asset('storage/avatars/default-avatar.png') }}"
+              src="{{ $user->avatar ? asset('storage/' . $user->avatar) : asset('storage/avatars/default-avatar.svg') }}"
               alt="{{ $user->name }}"
               class="w-40 h-40 rounded-full object-cover border-4 border-blue-500 shadow-lg mb-4"
             />

@@ -5,10 +5,10 @@
         <h3 class="text-3xl text-center font-bold mb-4">Profile Info</h3>
         <div class="mt-2 flex justify-center">
             <img
-                src="{{ $user->avatar ? asset('storage/' . $user->avatar) : asset('storage/avatars/default-avatar.png') }}"
+                src="{{ $user->avatar ? asset('storage/' . $user->avatar) : asset('storage/avatars/default-avatar.svg') }}"
                 alt="{{ $user->name }}"
                 class="w-32 h-32 object-cover rounded-full border-4 border-gray-200 shadow-lg"
-                onerror="this.src='{{ asset('storage/avatars/default-avatar.png') }}'"
+                onerror="this.src='{{ asset('storage/avatars/default-avatar.svg') }}'"
             />
         </div>
         <form method="POST" action="{{ route('profile.update') }}" enctype="multipart/form-data">
